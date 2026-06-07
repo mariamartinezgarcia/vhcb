@@ -15,3 +15,7 @@ models/clf_checkpoints.zip
 
 # Weights&Biases
 wandb/
+
+# Python cache
+__pycache__/
+*.pyc
