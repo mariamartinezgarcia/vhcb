@@ -1,0 +1,59 @@
+dataset:
+  name: celebahq
+  transforms_1: (0.5)
+  transforms_2: (0.5)
+  img_size: 256
+  batch_size: 32
+  test_batch_size: 100
+  num_channels: 3
+model:
+  checkpoint: models/pretrained_checkpoints/celebahq_vhcb_stygan2_clf_rn18_skl_sc5_50_balanced_concepts.pt
+  pretrained: models/pretrained_checkpoints/stylegan2-celebahq-256x256.pkl
+  type: cb_cvae_stygan2
+  use_cuda: True 
+  latent_noise_dim: 512
+  input_latent_dim: 10
+  has_concepts: True
+  # the mapping network outputs (batch_size, 14, 512) sized latents, where 512-vector is repeated 14 times
+  num_ws: 14
+  concepts: 
+      # Indicate the concepts used for training the model (to know which concept represents each component)
+      # all concepts
+      #concept_names: ['5_o_Clock_Shadow', 'Arched_Eyebrows', 'Attractive', 'Bags_Under_Eyes', 'Bald', 'Bangs', 'Big_Lips', 'Big_Nose', 'Black_Hair', 'Blond_Hair', 'Blurry', 'Brown_Hair', 'Bushy_Eyebrows', 'Chubby', 'Double_Chin', 'Eyeglasses', 'Goatee', 'Gray_Hair', 'Heavy_Makeup', 'High_Cheekbones', 'Male', 'Mouth_Slightly_Open', 'Mustache', 'Narrow_Eyes', 'No_Beard', 'Oval_Face', 'Pale_Skin', 'Pointy_Nose', 'Receding_Hairline', 'Rosy_Cheeks', 'Sideburns', 'Smiling', 'Straight_Hair', 'Wavy_Hair', 'Wearing_Earrings', 'Wearing_Hat', 'Wearing_Lipstick', 'Wearing_Necklace', 'Wearing_Necktie', 'Young']
+      # balanced concepts
+      concept_names: ['Attractive', 'Wearing_Lipstick', 'Mouth_Slightly_Open', 'Smiling', 'High_Cheekbones', 'Heavy_Makeup', 'Male', 'Arched_Eyebrows']
+      # low corr. concepts
+      #concept_names: ['Pale_Skin', 'Bangs', 'Big_Lips', 'Mouth_Slightly_Open', 'Chubby', 'Young', 'Smiling', 'Mustache']
+      emb_size: 16             
+
+  beta: 15
+  concept_inf: 'rep' # 'rep' (repetition codes) or 'uncoded'
+  sc_type: 'binary'  # If None, we do not include a side channel
+  sc_inf: 'rep'      # If binary, indicate 'rep' or 'uncoded'. If sc_type='continuous' or sc_type=None, this will be ignored (can be None)
+  sc_dim: 5          # If sc_type=None, this will be ignored (can be None)
+
+  concept_code:
+    # Note that the number of information bits must match the number of concepts
+    bits_info: 8
+    bits_code: 240
+    root: './repetition_codes/'
+    file: 'default'   # This will be ignored if concept_inf_type='uncoded'.
+
+  # This will be ignored if sc_type='continuous', sc_type=None. Bits of info are already specified in sc_dim
+  sc_code:
+    bits_info: 5
+    bits_code: 50
+    root: './repetition_codes/'
+    file: 'default'   # This will be ignored if concept_inf_type='uncoded'.
+    
+evaluation:
+  # Indicate the concepts that will be considered for evaluation (for example, for obtaining concept intervention metrics)
+  concepts_to_intervene: ['Attractive', 'Wearing_Lipstick', 'Mouth_Slightly_Open', 'Smiling', 'High_Cheekbones', 'Heavy_Makeup', 'Male', 'Arched_Eyebrows']
+  clf_type: 'supervised'
+  clf_architecture: 'rn50'
+  batch_size: 100
+  n_steps: 10
+log:
+  wandb: False
+  wandb_project: 'vhcb'
+  wandb_user: 'wandb_user'

@@ -1,0 +1,17 @@
+# Data
+datasets/CelebAMask-HQ/
+datasets/CUB_200_2011/
+
+# Latents for evaluation
+eval_latents_rn50_celebahq/
+eval_latents_rn50_cub/
+
+# Base model 
+models/pretrained_checkpoints/stylegan2-celebahq-256x256.pkl
+
+# Classifier checkpoints (train and eval)
+models/clf_checkpoints/
+models/clf_checkpoints.zip
+
+# Weights&Biases
+wandb/
