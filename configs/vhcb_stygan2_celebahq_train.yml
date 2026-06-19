@@ -61,28 +61,28 @@ model:
       #               ]
 
       # Balanced concepts
-      concept_names: ['Attractive', 'Wearing_Lipstick', 'Mouth_Slightly_Open', 'Smiling', 'High_Cheekbones', 'Heavy_Makeup', 'Male', 'Arched_Eyebrows']
-      set_of_classes: [ ['NOT Attractive', 'Attractive'],
-                        ['NOT Wearing Lipstick', 'Wearing Lipstick'],
-                        ['Mouth Closed', 'Mouth Slightly Open'],
-                        ['NOT Smiling', 'Smiling'],
-                        ['Low Cheekbones', 'High Cheekbones'],
-                        ['WITHOUT Heavy Makeup', 'Heavy Makeup'],
-                        ['Female', 'Male'],
-                        ['Straight Eyebrows', 'Arched Eyebrows'],
-                      ]
+      #concept_names: ['Attractive', 'Wearing_Lipstick', 'Mouth_Slightly_Open', 'Smiling', 'High_Cheekbones', 'Heavy_Makeup', 'Male', 'Arched_Eyebrows']
+      #set_of_classes: [ ['NOT Attractive', 'Attractive'],
+      #                  ['NOT Wearing Lipstick', 'Wearing Lipstick'],
+      #                  ['Mouth Closed', 'Mouth Slightly Open'],
+      #                  ['NOT Smiling', 'Smiling'],
+      #                  ['Low Cheekbones', 'High Cheekbones'],
+      #                  ['WITHOUT Heavy Makeup', 'Heavy Makeup'],
+      #                  ['Female', 'Male'],
+      #                  ['Straight Eyebrows', 'Arched Eyebrows'],
+      #                ]
       
       # Low corr. concepts
-      #concept_names: ['Pale_Skin', 'Bangs', 'Big_Lips', 'Mouth_Slightly_Open', 'Chubby', 'Young', 'Smiling', 'Mustache']
-      #set_of_classes: [ ['NOT Pale Skin', 'Pale Skin'],
-      #                  ['NO Bangs', 'Bangs'],
-      #                  ['NOT Big Lips', 'Big Lips'],
-      #                  ['Mouth Closed', 'Mouth Slightly Open'],
-      #                  ['Thin', 'Chubby'],
-      #                  ['Old', 'Young'],
-      #                  ['NOT Smiling', 'Smiling'],
-      #                  ['Clean-Shaved', 'Mustache']
-      #                ]
+      concept_names: ['Pale_Skin', 'Bangs', 'Big_Lips', 'Mouth_Slightly_Open', 'Chubby', 'Young', 'Smiling', 'Mustache']
+      set_of_classes: [ ['NOT Pale Skin', 'Pale Skin'],
+                        ['NO Bangs', 'Bangs'],
+                        ['NOT Big Lips', 'Big Lips'],
+                        ['Mouth Closed', 'Mouth Slightly Open'],
+                        ['Thin', 'Chubby'],
+                        ['Old', 'Young'],
+                        ['NOT Smiling', 'Smiling'],
+                        ['Clean-Shaved', 'Mustache']
+                      ]
                     
 
   beta: 15

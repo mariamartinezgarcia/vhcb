@@ -7,7 +7,7 @@ dataset:
   test_batch_size: 100
   num_channels: 3
 model:
-  checkpoint: models/pretrained_checkpoints/celebahq_vhcb_stygan2_clf_rn18_skl_sc5_50_balanced_concepts.pt
+  checkpoint: models/pretrained_checkpoints/celebahq_vhcb_stygan2_clf_rn18_skl_sc5_50_low_corr_concepts.pt
   pretrained: models/pretrained_checkpoints/stylegan2-celebahq-256x256.pkl
   type: cb_cvae_stygan2
   use_cuda: True 
@@ -21,9 +21,9 @@ model:
       # all concepts
       #concept_names: ['5_o_Clock_Shadow', 'Arched_Eyebrows', 'Attractive', 'Bags_Under_Eyes', 'Bald', 'Bangs', 'Big_Lips', 'Big_Nose', 'Black_Hair', 'Blond_Hair', 'Blurry', 'Brown_Hair', 'Bushy_Eyebrows', 'Chubby', 'Double_Chin', 'Eyeglasses', 'Goatee', 'Gray_Hair', 'Heavy_Makeup', 'High_Cheekbones', 'Male', 'Mouth_Slightly_Open', 'Mustache', 'Narrow_Eyes', 'No_Beard', 'Oval_Face', 'Pale_Skin', 'Pointy_Nose', 'Receding_Hairline', 'Rosy_Cheeks', 'Sideburns', 'Smiling', 'Straight_Hair', 'Wavy_Hair', 'Wearing_Earrings', 'Wearing_Hat', 'Wearing_Lipstick', 'Wearing_Necklace', 'Wearing_Necktie', 'Young']
       # balanced concepts
-      concept_names: ['Attractive', 'Wearing_Lipstick', 'Mouth_Slightly_Open', 'Smiling', 'High_Cheekbones', 'Heavy_Makeup', 'Male', 'Arched_Eyebrows']
+      #concept_names: ['Attractive', 'Wearing_Lipstick', 'Mouth_Slightly_Open', 'Smiling', 'High_Cheekbones', 'Heavy_Makeup', 'Male', 'Arched_Eyebrows']
       # low corr. concepts
-      #concept_names: ['Pale_Skin', 'Bangs', 'Big_Lips', 'Mouth_Slightly_Open', 'Chubby', 'Young', 'Smiling', 'Mustache']
+      concept_names: ['Pale_Skin', 'Bangs', 'Big_Lips', 'Mouth_Slightly_Open', 'Chubby', 'Young', 'Smiling', 'Mustache']
       emb_size: 16             
 
   beta: 15
@@ -48,7 +48,7 @@ model:
     
 evaluation:
   # Indicate the concepts that will be considered for evaluation (for example, for obtaining concept intervention metrics)
-  concepts_to_intervene: ['Attractive', 'Wearing_Lipstick', 'Mouth_Slightly_Open', 'Smiling', 'High_Cheekbones', 'Heavy_Makeup', 'Male', 'Arched_Eyebrows']
+  concepts_to_intervene: ['Pale_Skin', 'Bangs', 'Big_Lips', 'Mouth_Slightly_Open', 'Chubby', 'Young', 'Smiling', 'Mustache']
   clf_type: 'supervised'
   clf_architecture: 'rn50'
   batch_size: 100

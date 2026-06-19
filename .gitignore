@@ -19,3 +19,6 @@ wandb/
 # Python cache
 __pycache__/
 *.pyc
+
+# Results
+images_eval/
